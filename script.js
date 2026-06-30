@@ -37,7 +37,7 @@ themeToggle.addEventListener('click', () => {
         themeToggle.innerText = "☀️ Light Mode";
         localStorage.setItem('theme', 'dark'); // Save preference
     } else {
-        themeToggle.innerText = "🌙 Dark Mode";
+        themeToggle.innerText = "🌑 Dark Mode";
         localStorage.setItem('theme', 'light'); // Save preference
     }
 });
