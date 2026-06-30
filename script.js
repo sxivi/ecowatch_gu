@@ -9,6 +9,7 @@ const scrollToTopBtn = document.getElementById('scrollToTop');
 
 // --- 1. LOCAL STORAGE (Cookie Banner) ---
 const cookieBanner = document.getElementById('cookieBanner');
+
 if (!localStorage.getItem('cookiesAccepted')) {
     cookieBanner.classList.remove('hidden');
 }
@@ -17,9 +18,7 @@ document.getElementById('acceptCookies').addEventListener('click', () => {
     cookieBanner.classList.add('hidden');
 });
 
-// --- 2. EXTRA JS LOGIC (Scroll & Burger Menu) ---
-// Burger Menu logic
-// --- 2. EXTRA JS LOGIC (Dark Mode & Scroll) ---
+
 const themeToggle = document.getElementById('themeToggle');
 
 // Check local storage to see if they previously chose dark mode
@@ -42,26 +41,6 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// Scroll Events (Header Background + Scroll To Top)
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-
-    if (window.scrollY > 200) scrollToTopBtn.classList.remove('hidden');
-    else scrollToTopBtn.classList.add('hidden');
-});
-
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// --- 3. HELPER FUNCTION ---
-// Decides if a pollutant level is Good, Moderate, or Poor
-function getHealthStatus(value, goodLimit, moderateLimit) {
-    if (value <= goodLimit) return `<span class="text-good">Good</span>`;
-    if (value <= moderateLimit) return `<span class="text-fair">Moderate</span>`;
-    return `<span class="text-bad">Poor</span>`;
-}
 
 // --- 4. API FETCH LOGIC ---
 searchBtn.addEventListener('click', async () => {
@@ -94,6 +73,14 @@ searchBtn.addEventListener('click', async () => {
         searchBtn.innerText = "Analyze";
     }
 });
+
+// Decides if a pollutant level is Good, Moderate, or Poor
+function getHealthStatus(value, goodLimit, moderateLimit) {
+    if (value <= goodLimit) return `<span class="text-good">Good</span>`;
+    if (value <= moderateLimit) return `<span class="text-fair">Moderate</span>`;
+    return `<span class="text-bad">Poor</span>`;
+}
+
 
 // --- 5. UI DISPLAY LOGIC ---
 function displayData(cityName, temp, aqiLevel, pollutants) {
