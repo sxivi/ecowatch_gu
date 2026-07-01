@@ -83,7 +83,7 @@ function getHealthStatus(value, goodLimit, moderateLimit) {
 
 
 // --- 5. UI DISPLAY LOGIC ---
-function displayData(cityName, temp, weatherD, aqiLevel, pollutants) {
+function displayData(cityName, temp, weatherDesc, aqiLevel, pollutants) {
     // Generate text based on index
     const aqiText = ["", "Good", "Fair", "Moderate", "Poor", "Hazardous"][aqiLevel];
 
